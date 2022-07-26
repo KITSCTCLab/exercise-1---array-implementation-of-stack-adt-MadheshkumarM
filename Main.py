@@ -1,6 +1,6 @@
 class stackADT:
 
-  def _init_(self,s) :
+  def __init__(self,s) :
       self.size = s
       self.l = [None] * s
       self.top = -1
@@ -43,8 +43,8 @@ class stackADT:
           print(self.l[x])
 
 size = int(input("Enter the size of the stack:"))
-st1 = stackADT()
-   
+
+st1 = stackADT(size)
 
 while(1):
 
@@ -69,4 +69,5 @@ while(1):
 
   else :
      print("Invalid Input")
+
 
