@@ -1,47 +1,72 @@
-import os
-class Stack:
-    def __init__(self, size):
-        self.items = []
-        self.size = size
+class stackADT:
 
-    def is_empty(self):
-       if self.top == -1 :
+  def _init_(self,s) :
+      self.size = s
+      self.l = [None] * s
+      self.top = -1
+
+  def isFull(self) :
+   if self.top == (self.size - 1) :
+     return 1
+   else :
+     return 0
+
+  def isEmpty(self) :
+    if self.top == -1 :
      return 1
     else :
      return 0
 
-    def is_full(self):
-         if self.top == (self.size - 1) :
-     return 1
-    else :
-     return 0
-
-    def push(self, data):
-        if not self.is_full():
+  def push(self,y):
+      if self.isFull()==1:
           print("The stack is full")
           return "Push is not allowed"
       else:
           self.top = self.top+1
           self.l[self.top]=y
 
-    def pop(self):
-        if not self.is_empty():
-              return "the stack is empty"
+  def pop(self):
+      if self.isEmpty()==1:
+          return "the stack is empty"
       else:
           print(self.l[self.top])
           self.top = self.top-1
           return "Array removed"
 
-    def status(self):
-        # Write code here
+  def peek(self):
+      if self.top ==-1:
+          return "THe stack is empty"
+      else:
+          return self.l[self.top]
+  def display(self):
+      for x in range(self.top+1):
+          print(self.l[x])
 
-# Do not change the following code
-size, queries = map(int, input().rstrip().split())
-stack = Stack(size)
-for line in range(queries):
-    values = list(map(int, input().rstrip().split()))
-    if values[0] == 1:
-        stack.push(values[1])
-    elif values[0] == 2:
-        stack.pop()
-stack.status()
+size = int(input("Enter the size of the stack:"))
+st1 = stackADT()
+   
+
+while(1):
+
+  ch = int(input("1. Push 2. Pop 3. Peek 4. Display 5. Exit"))
+
+  if ch == 1 :
+
+    a = int(input("Enter the value to push :"))
+    st1.push(a)
+
+  elif ch == 2 :
+    print(st1.pop())
+
+  elif ch == 3 :
+    print (st1.peek())
+
+  elif ch == 4 :
+    st1.display()
+
+  elif ch == 5:
+     break
+
+  else :
+     print("Invalid Input")
+
